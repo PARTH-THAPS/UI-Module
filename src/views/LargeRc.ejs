@@ -1,0 +1,139 @@
+<h2>Billing Zone</h2>
+
+<form action="/api/RateCard/LargeRateCard" method="post">  
+    
+    <div style="color: green;margin-bottom: 5px;" >* Hint Select one of the Option For Local</div>
+    <label for="localStd">   
+        <input type="radio" id="localStd" name="local" value="Local-std" onclick="showInput()">
+        Local Standard
+    </label>
+
+    <label for="localExp">   
+        <input type="radio" id="localExp" name="local" value="Local-exp" onclick="showInput()">
+        Local Express
+    </label>
+
+    <div id="container"></div>
+    <div id="exp-container"></div>
+
+    <br>
+    
+    <div style="color: green;margin-bottom: 5px;">Hint Select one of the Option For Zonal</div>
+    <label for="zonalStd">   
+        <input type="radio" id="zonalStd" name="zonal" value="Zonal-std" onclick="showInput()">
+        Zonal Standard
+    </label>
+  
+    <label for="zonalExp">   
+        <input type="radio" id="zonalExp" name="zonal" value="Zonal-exp" onclick="showInput()">
+        Zonal Express
+    </label>
+
+    <div id="zonal-container"></div>
+    <div id="zonal-exp-container"></div>
+
+    <br>
+
+    <div style="color: green;margin-bottom: 5px;">Hint can Select two Options For Metro</div>
+    <label for="metroStd">   
+        <input type="radio" id="metroStd" name="metroStd" value="metro-std" onclick="showInput()">
+        Metro Standard
+    </label>
+
+    <label for="metroExp">   
+        <input type="radio" id="metroExp" name="metroExp" value="metro-exp" onclick="showInput()">
+        Metro Express
+    </label>
+
+    <div id="metro-container"></div>
+    <div id="metro-exp-container"></div>
+
+    <br>
+
+    <div style="color: green;margin-bottom: 5px;">Hint can Select two Options For ROI</div>
+    <label for="roiStd">   
+        <input type="radio" id="roiStd" name="roiStd" value="roi-std" onclick="showInput()">
+        ROI Standard
+    </label>
+
+    <label for="roiExp">   
+        <input type="radio" id="roiExp" name="roiExp" value="roi-exp" onclick="showInput()">
+        ROI Express
+    </label>
+
+    <div id="roi-container"></div>
+    <div id="roi-exp-container"></div>
+
+    <br>
+
+    <div style="color: green;margin-bottom: 5px;">Hint can Select two Options For NE J&K</div>
+    <label for="nejkStd">   
+        <input type="radio" id="nejkStd" name="nejkStd" value="nejk-std"  onclick="showInput()">
+        NE J&K Standard
+    </label>
+
+    <label for="nejkExp">   
+        <input type="radio" id="nejkExp" name="nejkExp" value="nejk-exp" onclick="showInput()">
+        NE J&K Express
+    </label>
+
+    <div id="nejk-container"></div>
+    <div id="nejk-exp-container"></div>
+
+    <label for="minimum_weight">
+     <div style="margin-top: 10px; color: red;">* Minimum billable Weight</div>   
+    <input style="margin-bottom: 10px;" type="text" required id="minimum_weight" name="minimum_weight" required>
+   
+    </label>
+
+    <br>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+
+</form>
+
+<!-- <h2>ADDITONAL CHARGES</h2>
+
+<div> -->
+
+
+<!-- <form action="/" method="post" class="charges-container">
+
+<div>   
+<label name="os_ow">OS OW CHARGES</label>    
+<br>
+<input name="os_ow" id="os_ow">
+</div> 
+
+
+<div>  
+<label name="oda">ODA CHARGES</label>
+<br>   
+<input name="oda" id="oda">
+</div> 
+
+
+<div> 
+<label name="risk">RISK CHARGES</label>    
+<br>
+<input name="risk" id="risk">
+</div> 
+
+<div>
+<label name="delivery_above_ground">DELIVERY ABOVE GROUND</label> 
+<br>   
+<input name="delivery_above_ground" id="delivery_above_ground">
+</div> 
+
+
+<div> 
+<label name="docket_fee">DOCKET FEE</label>    
+<br>
+<input name="docket_fee" id="docket_fee">
+</div> 
+
+<button type="button" class="btn btn-success">Right</button>
+
+</form> -->
+ 
+ <!-- </div> -->

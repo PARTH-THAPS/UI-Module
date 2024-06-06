@@ -1,0 +1,67 @@
+
+.consolidate {
+    font-size: 24px; /* Adjust font size as needed */
+    display: flex; /* Corrected: Use "flex" instead of "flexbox" */
+    flex-direction: row;
+    color: blue;
+}
+
+
+.flex-container
+{
+display: flex;
+flex-direction:row;
+justify-content:space-around;
+}
+
+
+/* #block-container
+{
+border:solid white 2px;
+border-radius: 5px;
+height: 210px;
+width: 310px;
+margin-top: 200px;
+
+} */
+
+
+#block-container {
+  border: solid invisible 1px;
+  height: 210px;
+  width: 310px;
+  margin-top: 200px;
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+
+.flex-container {
+  display: flex;
+}
+
+.Box {
+  margin-right: 10px; /* Add some spacing between boxes */
+
+}
+
+.Box button {
+  width: 100%; /* Make button full width */
+}
+
+
+.charges-container div
+{
+margin-bottom: 50px;
+}
+
+.charges-container div input
+{
+border-radius: 20px;
+}
+
+
+.charges-container div input:hover
+{
+  height:40px ;
+}
