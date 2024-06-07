@@ -1,9 +1,10 @@
 import { spawn } from 'child_process';
 import notifier from 'node-notifier';
 
-export class uatControllerLarge {
+export class uatControllerb2b {
+
     static formCollect = (req, res) => {
-        res.render('UatCreationFormLarge');
+        res.render('UatCreationFormb2b');
     }
 
     static submitData = (req, res) => {   
@@ -11,7 +12,7 @@ export class uatControllerLarge {
         const merchant_names = rate_card_name.split(',');
         console.log(merchant_names);
 
-        const pythonProcess = spawn('python3', ['Public/Script/uatLarge.py', ...merchant_names]);
+        const pythonProcess = spawn('python3', ['Public/Script/b2bUatCreation.py', ...merchant_names]);
 
         pythonProcess.stdout.on('data', (data) => {
             console.log(`Python script output: ${data}`);

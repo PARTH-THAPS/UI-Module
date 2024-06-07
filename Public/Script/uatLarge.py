@@ -29,7 +29,7 @@ def replicate_data_for_merchants(source_file, merchant_ids, output_file):
 merchant_ids = sys.argv[1:]
 
 source_file = '/home/parth/Downloads/Dummy File for UAT_SPS(2).csv'
-output_file = '/home/parth/Downloads/merged_orders.csv'
+output_file = '/home/parth/Downloads/merged_ordersLarge.csv'
 
 replicate_data_for_merchants(source_file, merchant_ids, output_file)
 

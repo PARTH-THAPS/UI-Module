@@ -9,6 +9,7 @@ import {uatRouter } from './src/UAT/UatRoute.js';
 import {RateRouter} from './src/RateCreationLarge/RateRoute.js'
 import {non_large_router} from "./src/Rate Card Creation Non Large/NonLargeRoutes.js";
 import {uatLargeRouter} from "./src/UAT Large/UatRouteLarge.js"
+import {uatb2bRouter} from "./src/B2B UAT/uatb2bRouter.js"
 
 
 
@@ -51,6 +52,7 @@ server.get('/addFile',createFile);
 
 server.use('/api/RateCardn/',non_large_router);
 server.use('/api/LargeUAT/',uatLargeRouter);
+server.use('/api/b2bUAT/',uatb2bRouter);
 
 const PORT = 3030;
 server.listen(PORT, () => {
