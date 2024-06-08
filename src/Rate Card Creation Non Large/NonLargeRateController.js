@@ -22,13 +22,69 @@ export class NonLargeRateController {
             nejkExp,
             NEJKStd,
             NEJKExp,
-            minimum_weight
+            rtolocal,
+            LocalExpRto,
+            rtozonal,
+            ZonalExpRto,
+            rtometroStd,
+            rtometroExp,
+            MetroStdRto,
+            MetroExpRto,
+            rtoroiStd,
+            rtoroiExp,
+            ROIStdRto,
+            ROIExpRto,
+            rtonejkStd,
+            rtonejkExp,
+            NEJKStdRto,
+            NEJKExpRto,
+            incremental_weight_slab,
+            rvp_slab
         } = req.body;
+
+       
 
         try {
             const workbook = new ExcelJS.Workbook();
             const sheet = workbook.addWorksheet('Sheet1');
             let data = [];
+
+           
+
+
+            if (LocalExp) {
+
+                var localSlab = LocalExp.split('/');
+                const localFreight = localSlab[0];
+                
+                const localIncrementalFreight = localSlab[1];
+
+                const obj = {
+                    billing_zone_code: "LOCAL-EXP_LOCAL-EXP_FORWARD",
+                    based_on: "WEIGHT",
+                    from: 0,
+                    to: incremental_weight_slab,
+                    slab_freight: localFreight,
+                    incremental_weight_slab: incremental_weight_slab,
+                    incremental_freight: localIncrementalFreight,
+                    service_type: "default",
+                    order_type: "default"
+                };
+                data.push(obj);
+
+                const dupli = {
+                    billing_zone_code: "LOCAL-STD_LOCAL-STD_FORWARD",
+                    based_on: "WEIGHT",
+                    from: 0,
+                    to: incremental_weight_slab,
+                    slab_freight: localFreight,
+                    incremental_weight_slab: incremental_weight_slab,
+                    incremental_freight: localIncrementalFreight,
+                    service_type: "default",
+                    order_type: "default"
+                };
+                data.push(dupli);
+            }
 
             if (data.length > 0) {
                 const headers = Object.keys(data[0]);
@@ -39,9 +95,10 @@ export class NonLargeRateController {
                 });
 
                 // Save the workbook
-                await workbook.xlsx.writeFile('/home/parth/Downloads/query execution/lotr1.xlsx');
+                const filePath = '/home/parth/Downloads/nonLargeRateCard.xlsx'; // Update file path
+                await workbook.xlsx.writeFile(filePath);
                 console.log("Excel file generated successfully");
-                res.send("Excel file generated successfully");
+                res.sendFile(filePath); // Return the generated file to the client
             } else {
                 console.log("No data to write to Excel");
                 res.status(400).send("No data provided");

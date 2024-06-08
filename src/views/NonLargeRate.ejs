@@ -1,6 +1,8 @@
 <h2>Billing Zone</h2>
 
-<form action="/api/RateCard/LargeRateCard" method="post">  
+<form action="/api/RateCardnonLarge/nonLargeRateCard" method="post">  
+
+    <h3>Forward Rates</h3>
     
     <div style="color: green;margin-bottom: 5px;" >* Hint Select one of the Option For Local</div>
     <label for="localStd">   
@@ -80,11 +82,100 @@
     <div id="nejk-container"></div>
     <div id="nejk-exp-container"></div>
 
+    
+    <h3>RTO Rates</h3>
+
+<!-- RTO VERSION -->
+
+<div style="color: green;margin-bottom: 5px;" >* Hint Select one of the Option For Local</div>
+    <label for="rtolocalStd">   
+        <input type="radio" id="rtolocalStd" name="rtolocal" value="rto-Local-std" onclick="showInputRto()">
+        Local Standard
+    </label>
+
+    <label for="rtolocalExp">   
+        <input type="radio" id="rtolocalExp" name="rtolocal" value="rto-Local-exp" onclick="showInputRto()">
+        Local Express
+    </label>
+
+    <div id="rto-container"></div>
+    <div id="rto-exp-container"></div>
+
+    <br>
+    
+    <div style="color: green;margin-bottom: 5px;">Hint Select one of the Option For Zonal</div>
+    <label for="rtozonalStd">   
+        <input type="radio" id="rtozonalStd" name="rtozonal" value="rto-Zonal-std" onclick="showInputRto()">
+        Zonal Standard
+    </label>
+  
+    <label for="rtozonalExp">   
+        <input type="radio" id="rtozonalExp" name="rtozonal" value="rto-Zonal-exp" onclick="showInputRto()">
+        Zonal Express
+    </label>
+
+    <div id="rto-zonal-container"></div>
+    <div id="rto-zonal-exp-container"></div>
+
+    <br>
+
+    <div style="color: green;margin-bottom: 5px;">Hint can Select two Options For Metro</div>
+    <label for="rtometroStd">   
+        <input type="radio" id="rtometroStd" name="rtometroStd" value="rto-metro-std" onclick="showInputRto()">
+        Metro Standard
+    </label>
+
+    <label for="rtometroExp">   
+        <input type="radio" id="rtometroExp" name="rtometroExp" value="rto-metro-exp" onclick="showInputRto()">
+        Metro Express
+    </label>
+
+    <div id="rto-metro-container"></div>
+    <div id="rto-metro-exp-container"></div>
+
+    <br>
+
+    <div style="color: green;margin-bottom: 5px;">Hint can Select two Options For ROI</div>
+    <label for="rtoroiStd">   
+        <input type="radio" id="rtoroiStd" name="rtoroiStd" value="rto-roi-std" onclick="showInputRto()">
+        ROI Standard
+    </label>
+
+    <label for="rtoroiExp">   
+        <input type="radio" id="rtoroiExp" name="rtoroiExp" value="rto-roi-exp" onclick="showInputRto()">
+        ROI Express
+    </label>
+
+    <div id="rto-roi-container"></div>
+    <div id="rto-roi-exp-container"></div>
+
+    <br>
+
+    <div style="color: green;margin-bottom: 5px;">Hint can Select two Options For NE J&K</div>
+    <label for="rtonejkStd">   
+        <input type="radio" id="rtonejkStd" name="rtonejkStd" value="rto-nejk-std"  onclick="showInputRto()">
+        NE J&K Standard
+    </label>
+
+    <label for="rtonejkExp">   
+        <input type="radio" id="rtonejkExp" name="rtonejkExp" value="rto-nejk-exp" onclick="showInputRto()">
+        NE J&K Express
+    </label>
+
+    <div id="rto-nejk-container"></div>
+    <div id="rto-nejk-exp-container"></div>
+
     <label for="incremental_weight_slab">
      <div style="margin-top: 10px; color: red;">* Incremental Weight Slab</div>   
     <input style="margin-bottom: 10px;" type="text" required id="incremental_weight_slab" name="incremental_weight_slab" required>
     </label>
-   
+
+    <br>
+    <label for="rvp_slab">
+        <div style="margin-top: 10px; color: red;">* RVP Weight Slab</div>   
+       <input style="margin-bottom: 10px;" type="text" required id="rvp_slab" name="rvp_slab" required>
+       </label>
+
     <br>
 
     <button type="submit" class="btn btn-success">Submit</button>

@@ -49,8 +49,7 @@ server.get('/create',(req,res)=>{
 });
 
 server.get('/addFile',createFile);
-
-server.use('/api/RateCardn/',non_large_router);
+server.use('/api/RateCardnonLarge/',non_large_router);
 server.use('/api/LargeUAT/',uatLargeRouter);
 server.use('/api/b2bUAT/',uatb2bRouter);
 

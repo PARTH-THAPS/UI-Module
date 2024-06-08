@@ -9,7 +9,7 @@ export class RateController {
         res.render('LargeRc');
     }
 
-    static async modelSend(req, res) {
+     async modelSend(req, res) {
 
         console.log(req.body);
         const {
@@ -137,7 +137,7 @@ export class RateController {
 
     var dupli=
     {
-        billing_zone_code: "LOCAL-EXP_LOCAL-EXP_RTO",
+        billing_zone_code: "LOCAL-EXP_LOCAL-EXP_FORWARD",
         based_on: "WEIGHT",
         from: 0,
         to: minimum_weight,
@@ -258,7 +258,7 @@ data.push( dupli1);
 
 var dupli=
 {
-billing_zone_code: "ZONAL-EXP_ZONAL-EXP_RTO",
+billing_zone_code: "ZONAL-EXP_ZONAL-EXP_FORWARD",
 based_on: "WEIGHT",
 from: 0,
 to: minimum_weight,
@@ -869,10 +869,6 @@ if(NEJKStd && NEJKExp){
 
 
 
-// 
-
-
-
             const headers = Object.keys(data[0]);
             sheet.addRow(headers);       
             data.forEach(row => {
@@ -880,9 +876,10 @@ if(NEJKStd && NEJKExp){
             });
 
             // Save the workbook
-            await workbook.xlsx.writeFile('/home/parth/Downloads/query execution/lotr1.xlsx');
+      await workbook.xlsx.writeFile('/home/parth/Downloads/largeRateCard.xlsx');
+      res.sendFile('/home/parth/Downloads/largeRateCard.xlsx');
+      
             console.log("Excel file generated successfully");
-            res.send("Excel file generated successfully");
         } catch (err) {
             console.error("Error generating Excel file:", err);
             res.status(500).send("Error generating Excel file");
