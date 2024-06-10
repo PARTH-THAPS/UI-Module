@@ -15,17 +15,6 @@ justify-content:space-around;
 }
 
 
-/* #block-container
-{
-border:solid white 2px;
-border-radius: 5px;
-height: 210px;
-width: 310px;
-margin-top: 200px;
-
-} */
-
-
 #block-container {
   border: solid invisible 1px;
   height: 210px;
