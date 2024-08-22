@@ -5,7 +5,7 @@ export class uatController {
 
     
     static formCollect = (req, res) => {
-        res.render('UatCreationForm');
+        res.render('UatCreationForm',{userEmail:req.session.userEmail});
     }
     static submitData=(req,res)=>
     {   

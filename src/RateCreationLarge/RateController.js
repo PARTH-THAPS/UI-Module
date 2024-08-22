@@ -2,11 +2,11 @@ import ExcelJS from 'exceljs';
 
 export class RateController {
     static FormUI(req, res) {
-        res.render('rateCardForm');
+        res.render('rateCardForm',{userEmail:req.session.userEmail});
     }
 
     static LargeRateCardUI(req, res) {
-        res.render('LargeRc');
+        res.render('LargeRc',{userEmail:req.session.userEmail});
     }
 
      async modelSend(req, res) {

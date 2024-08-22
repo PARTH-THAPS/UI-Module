@@ -1368,7 +1368,7 @@ export class NonLargeRateController {
                 });
 
                 // Save the workbook
-                const filePath = '/home/parth/Downloads/nonLargeRateCard.xlsx'; // Update file path
+                const filePath = 'C:\Users\parth\nonLargeRateCard.xlsx'; // Update file path
                 await workbook.xlsx.writeFile(filePath);
                 console.log("Excel file generated successfully");
                 res.sendFile(filePath); // Return the generated file to the client

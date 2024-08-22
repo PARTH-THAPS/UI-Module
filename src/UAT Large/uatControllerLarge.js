@@ -3,7 +3,7 @@ import notifier from 'node-notifier';
 
 export class uatControllerLarge {
     static formCollect = (req, res) => {
-        res.render('UatCreationFormLarge');
+        res.render('UatCreationFormLarge',{userEmail:req.session.userEmail});
     }
 
     static submitData = (req, res) => {   

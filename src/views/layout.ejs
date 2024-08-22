@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/style.css">
+    <link rel="icon" type="image/x-icon" href="/path/to/your/favicon.ico">
     <script src="../../Public/jsScript.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
@@ -30,40 +31,72 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/">EKART-LARGE SCRIPT</a>
+                    <%if(locals.userEmail){%>
+
+                    <li class="nav-item" style="font-size: 10px;">
+                        <a class="nav-link active" aria-current="page" href="/api/nonlarge/index">EKART-B2C</a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/api/UAT/">EKART-B2C SCRIPT</a>
-                    </li>
-
-                    <li class="nav-item">
+                    <li class="nav-item" style="font-size: 10px;">
                         <a class="nav-link active" aria-current="page" href="/api/UAT/">NON LARGE UAT CREATION</a>
                     </li>
 
-                    <li class="nav-item">
+                    <li class="nav-item" style="font-size: 10px;">
                         <a class="nav-link active" aria-current="page" href="/api/LargeUAT/">LARGE UAT CREATION</a>
                     </li>
 
-                    <li class="nav-item">
+                    <li class="nav-item" style="font-size: 10px;">
                         <a class="nav-link active" aria-current="page" href="/api/b2bUAT/">B2B UAT CREATION</a>
                     </li>
 
 
-                    <li class="nav-item">
+                    <li class="nav-item"style="font-size: 10px;">
                         <a class="nav-link active" aria-current="page" href="/api/RateCard/">RATE CARD CREATION</a>
                     </li>
+
+                    <li class="nav-item" style="font-size: 10px;">
+                        <a class="nav-link active" aria-current="page" href="/api/user/logout">
+                         LOGOUT
+                        </a>
+                    </li>
+
+                    
+
+                    <%}if(!locals.userEmail){%>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/api/user/login">LOGIN</a>
+                        </li>
+                        
+
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="/api/user/register">REGISTER</a>
+                            </li>
+    
+
+                    <%}%>    
 
                 </ul>
             </div>
         </div>
     </nav>
+
+
+
 <div class="container">
 
 <%-body%>
 
 </div>
+
+
 </body>
+
+<footer>
+    <% if (locals.lastVisit) { %>
+        <div class="alert alert-secondary" role="alert">
+            A simple secondary alert—check it out! <%= locals.lastVisit %>
+        </div>
+    <% } %>
+</footer>
 
 </html>

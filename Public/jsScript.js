@@ -282,3 +282,52 @@ function showInputRto() {
     createInputs();
 }
 
+function fetchData() {
+    var form = document.getElementById('fetchDataForm');
+    var url = form.getAttribute('action') + '?' + serializeForm(form);
+
+    console.log("Fetching data from:", url);
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', url, true);
+
+    xhr.onload = function () {
+        if (xhr.status >= 200 && xhr.status < 400) {
+            var data = JSON.parse(xhr.responseText);
+            displayData(data);
+        } else {
+            console.error('Error fetching data:', xhr);
+            displayError('Error fetching data. Please try again later.');
+        }
+    };
+
+    xhr.onerror = function () {
+        console.error('Request failed');
+        displayError('Request failed. Please check your network connection.');
+    };
+
+    xhr.send();
+}
+
+function serializeForm(form) {
+    var formData = new FormData(form);
+    var serialized = [];
+    for (var [key, value] of formData.entries()) {
+        serialized.push(encodeURIComponent(key) + '=' + encodeURIComponent(value));
+    }
+    return serialized.join('&');
+}
+
+function displayData(data) {
+    var displayDiv = document.getElementById('displayData');
+    if (data && data.result) {
+        displayDiv.textContent = JSON.stringify(data.result, null, 2);
+    } else {
+        displayDiv.textContent = 'No data available.';
+    }
+}
+
+function displayError(message) {
+    var displayDiv = document.getElementById('displayData');
+    displayDiv.textContent = message;
+}

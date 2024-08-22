@@ -1,0 +1,50 @@
+<h1>EKART NON LARGE</h1>
+<ul> <!-- Use <ul> instead of <li> for unordered list -->
+
+    <li>
+            <h3 style="margin-top: 20px;">Upload Data In Client State tax Master Database</h3> <!-- Move heading inside list item -->
+            <div class="consolidate">
+                <form action="/api/nonlarge/upload" method="post" enctype="multipart/form-data">
+                    <input type="file" name="document" required  style="margin-top: 20px;">
+                    <div style="margin-top: 20px;">
+                        <button type="submit" class="btn btn-success">Upload</button>
+                    </div>
+                </form>
+            </div>
+    </li>
+
+    <li>
+        <h3 style="margin-top: 20px;">Get Data From Client State tax Master Database</h3>
+        <div class="consolidate">
+            <form id="fetchDataForm" action="https://api-sea.fareyeconnect.com/ekart-validation/public/api/client/get/clientStateTax" method="get">
+                <input type="text" id="validationStateTaxApi" name="validationStateTaxApi" required readonly style="margin-top: 20px;" value="https://api-sea.fareyeconnect.com/ekart-validation/public/api/client/get/clientStateTax">
+                <button type="submit" class="btn btn-success">FETCH</button>
+            </form>
+            <div id="displayData"></div>
+        </div>
+    </li>
+
+    <li>
+        <h3 style="margin-top: 20px;">Download The Data from client state tax master in .CSV </h3>
+        <div class="consolidate">
+            <form id="fetchDataForm" action="/api/nonlarge/download-csv/client-state-tax" method="get">
+                <button type="submit" class="btn btn-info">GENERATE</button>
+            </form>
+        </div>
+    </li>
+
+
+
+    <li>
+        <h3 style="margin-top: 20px;">Validate Client State tax Master Database</h3>
+        <div class="consolidate">
+            <form id="fetchDataForm" action="https://api-sea.fareyeconnect.com/ekart-validation/public/api/get/merchant" method="get">
+                <input type="text" id="validationStateTaxApi" name="validationStateTaxApi" required readonly style="margin-top: 20px;" value="https://api-sea.fareyeconnect.com/ekart-validation/public/api/get/merchant">
+                <button type="submit" onclick="fetchData()" class="btn btn-info">VALIDATE</button>
+            </form>
+            <div id="displayData"></div>
+        </div>
+    </li>
+
+</ul>
+

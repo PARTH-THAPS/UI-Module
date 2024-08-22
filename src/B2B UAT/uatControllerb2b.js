@@ -4,7 +4,7 @@ import notifier from 'node-notifier';
 export class uatControllerb2b {
 
     static formCollect = (req, res) => {
-        res.render('UatCreationFormb2b');
+        res.render('UatCreationFormb2b',{userEmail:req.session.userEmail});
     }
 
     static submitData = (req, res) => {   

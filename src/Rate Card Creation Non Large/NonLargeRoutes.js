@@ -4,7 +4,7 @@ import { NonLargeRateController } from "./NonLargeRateController.js";
 export const non_large_router = express.Router();
 
 non_large_router.get('/rate_card_creation', (req, res) => {
-    res.render("NonLargeRate");
+    res.render("NonLargeRate",{userEmail:req.session.userEmail});
 });
 
 non_large_router.post('/nonLargeRateCard', async (req, res) => {
