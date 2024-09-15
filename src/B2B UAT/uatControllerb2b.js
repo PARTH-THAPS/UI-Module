@@ -12,7 +12,7 @@ export class uatControllerb2b {
         const merchant_names = rate_card_name.split(',');
         console.log(merchant_names);
 
-        const pythonProcess = spawn('python3', ['Public/Script/b2bUatCreation.py', ...merchant_names]);
+        const pythonProcess = spawn('python', ['Public/Script/b2bUatCreation.py', ...merchant_names]);
 
         pythonProcess.stdout.on('data', (data) => {
             console.log(`Python script output: ${data}`);
