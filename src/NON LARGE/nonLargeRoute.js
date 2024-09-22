@@ -11,11 +11,7 @@ nonLargeRoute.post('/upload', (req, res) => {
     nonLargeController.uploadFile(req, res);
 });
 
-// // Define another GET route
-// nonLargeRoute.get('/another-path', (req, res) => {
-//     // Handle GET request for '/another-path' here
-//     res.send('This is another path');
-// });
+
 
 nonLargeRoute.get('/download-csv/client-state-tax',(req,res)=>{
     nonLargeController.DownloadFile(req,res);

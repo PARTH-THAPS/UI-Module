@@ -38,7 +38,7 @@ export class nonLargeController {
                         return acc;
                     }, []);
 
-                    axios.post('https://api-sea.fareyeconnect.com/ekart-consumer/public/api/client/add/clientStates', transformedData)
+                    axios.post('https://api-sea.fareyeconnect.com/ekart-validation/public/api/client/add/clientStates', transformedData)
                         .then(response => {
                             console.log("API Response:", response.data);
                             return res.status(200).send("File uploaded and processed successfully.");
@@ -57,7 +57,7 @@ export class nonLargeController {
 
 static DownloadFile(req,res)
 {
-    axios.get('https://api-sea.fareyeconnect.com/ekart-consumer/public/api/client/get/clientStateTax')
+    axios.get('https://api-sea.fareyeconnect.com/ekart-validation/public/api/client/get/clientStateTax')
     .then(response => {
         const responseData = JSON.stringify(response.data);
 

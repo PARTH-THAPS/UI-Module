@@ -1,31 +1,57 @@
 <h1>Services</h1>
 <span id="color">Hint: Choose Account From the given option</span>
 
-<div class="flex-container">
-    <div id="block-container">
-        <div class="Box">
-            <form method="get" action="/api/RateCard/LargeRateCard">
-                <button style=" background-color: red;color:white; /* Set text color to white */
-                padding: 10px 20px; /* Add padding for better appearance */
-                font-size: 16px; /* Set font size */
-                border: none; /* Remove border */
-                border-radius: 5px; /* Add border radius for rounded corners */
-                cursor: pointer;">LARGE</button>
-            </form>
-        </div>
-    </div>
-
-
-    <div id="block-container">
-    <div class="Box">
-        <form method="get" action="/api/RateCardnonLarge/rate_card_creation">
-            <button style="background-color: green;color: white; /* Set text color to white */
-            padding: 10px 20px; /* Add padding for better appearance */
-            font-size: 16px; /* Set font size */
-            border: none; /* Remove border */
-            border-radius: 5px; /* Add border radius for rounded corners */
-            cursor: pointer;">NON LARGE</button>
-        </form>
-    </div>
-    </div>
-</div>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Service</th>
+        <th scope="col">Description</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>LARGE RATE CARD</td>
+        <td>TO CREATE LARGE RATE CARDS</td>
+        <td><div >
+            <div>
+                <div>
+                    <form method="get" action="/api/RateCard/LargeRateCard">
+                        <button style=" background-color: red;color:white; /* Set text color to white */
+                        padding: 10px 20px; /* Add padding for better appearance */
+                        font-size: 16px; /* Set font size */
+                        border: none; /* Remove border */
+                        border-radius: 5px; /* Add border radius for rounded corners */
+                        cursor: pointer;">LARGE</button>
+                    </form>
+                </div>
+            </div></td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>NON LARGE</td>
+        <td>TO CREATE NON-LARGE RATE CARDS</td>
+        <td>   <div>
+            <div >
+                <form method="get" action="/api/RateCardnonLarge/rate_card_creation">
+                    <button style="background-color: green;color: white; /* Set text color to white */
+                    padding: 10px 20px; /* Add padding for better appearance */
+                    font-size: 16px; /* Set font size */
+                    border: none; /* Remove border */
+                    border-radius: 5px; /* Add border radius for rounded corners */
+                    cursor: pointer;">NON LARGE</button>
+                </form>
+            </div>
+            </div>
+        </div></td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>B2B</td>
+        <td>TO CREATE B2B RATE CARDS</td>
+        <td>UPCOMING MODULE</td>
+      </tr>
+    </tbody>
+  </table>

@@ -3,7 +3,6 @@ import notifier from 'node-notifier';
 
 export class uatController {
 
-    
     static formCollect = (req, res) => {
         res.render('UatCreationForm',{userEmail:req.session.userEmail});
     }
@@ -14,7 +13,7 @@ export class uatController {
 
        const merchant_names =rate_card_name.split(',');
        
-       const pythonProcess = spawn('python3', ['Public/Script/uatCreation.py', JSON.stringify(merchant_names)]);
+       const pythonProcess = spawn('python', ['Public/Script/uatCreation.py', JSON.stringify(merchant_names)]);
 
        pythonProcess.stdout.on('data', (data) => {
            console.log(`Python script output: ${data}`);

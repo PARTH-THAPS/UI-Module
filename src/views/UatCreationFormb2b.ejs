@@ -1,9 +1,33 @@
 <h1>B2B Uat Creation</h1>
 <p>Note: Please Fill in the Form to Create Excel File For Uat</p>
 
-<form action="/api/b2bUAT/SubmitData/" method="post">
+<form action="/api/b2bUAT/SubmitData/" method="post" style="margin-bottom: 100px;">
     <label for="rate_card_name">Please fill in Merchant names (comma separated)</label>
     <input type="text" name="rate_card_name" id="rate_card_name" required>
     <br>
     <input type="submit" value="Submit">
 </form>
+
+
+<h3 class="text-body-secondary">TRANSFORMING 5*5 To 16*16</h3>
+
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">S.No</th>
+        <th scope="col">Description</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td scope="row">1</td>
+        <td scope="row">Upload the file which is in 5*5 to convert it to 16*16</td>
+        <td> <form action="/api/b2bRateCard/upload" method="post" enctype="multipart/form-data">
+            <input type="file" name="document" required  style="margin-top: 20px;">
+                <button type="submit" class="btn btn-success">Upload</button>
+        </form></td>
+      </tr>
+    </tbody>
+  </table>

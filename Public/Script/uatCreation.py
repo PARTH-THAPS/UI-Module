@@ -18,7 +18,7 @@ def generate_data(merchant_names, uploaded_file):
     merchant_ids = []
     accrual_party_id_to = []
     for merchant in merchant_names:
-        for i in range(1, 2291):
+        for i in range(1, 2516):
             tracking_ids.append(f"{merchant}_{i}")
             merchant_ids.append(f"{merchant}_{i}")
             accrual_party_id_to.append(merchant)
@@ -40,8 +40,8 @@ def generate_data(merchant_names, uploaded_file):
     return data
 
 # Example usage
-uploaded_file = '/home/parth/Downloads/testingup.xlsx' 
-output_file = '/home/parth/Downloads/b2cuatFile/outputUAT2.xlsx'
+uploaded_file = r'C:\Users\parth\Downloads\testingup.xlsx' 
+output_file = r'C:\Users\parth\Downloads\NonLargeOutputUAT2.xlsx'
 
 data = generate_data(merchant_names, uploaded_file)
 data.to_excel(output_file, index=False)
