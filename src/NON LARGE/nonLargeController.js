@@ -4,7 +4,9 @@ import axios from 'axios';
 import {Parser} from 'json2csv';
 import fs from "fs";
 import { response } from "express";
+import dotenv from "dotenv";
 
+dotenv.config();
 
 export class nonLargeController {
     static uploadFile(req, res) {
@@ -38,7 +40,7 @@ export class nonLargeController {
                         return acc;
                     }, []);
 
-                    axios.post('https://api-sea.fareyeconnect.com/ekart-validation/public/api/client/add/clientStates', transformedData)
+                    axios.post(process.env.POST_DB, transformedData)
                         .then(response => {
                             console.log("API Response:", response.data);
                             return res.status(200).send("File uploaded and processed successfully.");
@@ -57,7 +59,7 @@ export class nonLargeController {
 
 static DownloadFile(req,res)
 {
-    axios.get('https://api-sea.fareyeconnect.com/ekart-validation/public/api/client/get/clientStateTax')
+    axios.get(process.env.GET_DB)
     .then(response => {
         const responseData = JSON.stringify(response.data);
 

@@ -29,10 +29,6 @@ export class RateControllerB2B {
 
           const originalHeaders = Object.keys(sheetData[0]);
 
-          // Log data and headers
-          console.log('Sheet Data:', sheetData);
-          console.log('Original Headers:', originalHeaders);
-
           const transformedData = transformData({ RCM_FREIGHT_CHARGES: sheetData });
           const csvFilePath = `uploads/${req.file.filename}.csv`;
 

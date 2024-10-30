@@ -19,8 +19,8 @@ def generate_data(merchant_names, uploaded_file):
     accrual_party_id_to = []
     for merchant in merchant_names:
         for i in range(1, 2516):
-            tracking_ids.append(f"{merchant}_{i}")
-            merchant_ids.append(f"{merchant}_{i}")
+            tracking_ids.append(f"{merchant}_{str(i)}")
+            merchant_ids.append(f"{merchant}_{str(i)}")
             accrual_party_id_to.append(merchant)
 
     # Extract the additional columns from the uploaded data

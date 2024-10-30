@@ -22,19 +22,25 @@ import {logger} from './src/middlewares/logger.middleware.js';
 import { ApplicationError } from './src/error-handler/applicationError.js';
 import status from 'express-status-monitor';
 import { b2bRouter } from './src/Rate Card Creation b2b/RateRouteB2B.js';
+import cors from "cors";
+import {Server} from 'socket.io';
+import http from "http";
+import { chatModel } from './src/Chat Bot/chat.schema.js';
+import { timeStamp } from 'console';
+ 
 
 
 
-const server = express();
+const app = express();
 
-server.use(express.urlencoded({extended:true})); 
-server.use(express.json());
-//cookie parser will put the res which is sent from server to client in req of client
-server.use(cookieParser())
-// server.use(setLastVisit);
+app.use(express.urlencoded({extended:true})); 
+app.use(express.json());
+//cookie parser will put the res which is sent from app to client in req of client
+app.use(cookieParser())
+// app.use(setLastVisit);
 
 //session middlewares
-server.use(session({
+app.use(session({
     secret: 'VeryLongSecretKey', 
     resave: false,
     saveUninitialized: true,
@@ -43,12 +49,12 @@ server.use(session({
     }
 }));
 
-//to check the status of express server
-server.use(status());
+//to check the status of express app
+app.use(status());
 
-server.use(loggerMiddleware);
+app.use(loggerMiddleware);
 
-server.use((err,req,res,next)=>{
+app.use((err,req,res,next)=>{
 
     if(err instanceof ApplicationError){
         res.status(err.code).send(err.message);
@@ -58,11 +64,11 @@ server.use((err,req,res,next)=>{
     res.status(503).send('something went wrong, please try later');
 });
 
-server.set('view engine', 'ejs');
-server.set('views', path.join('src', 'views'));
-server.use(ejsLayout);
-server.use(express.static('src/views'));
-server.use('/Public', express.static(path.join('Public')));
+app.set('view engine', 'ejs');
+app.set('views', path.join('src', 'views'));
+app.use(ejsLayout);
+app.use(express.static('src/views'));
+app.use('/Public', express.static(path.join('Public')));
 
 
 
@@ -73,30 +79,79 @@ console.log("Random Integer:", randomInteger);
 //cache
 
 
-server.use('/api/user/',userRouter);
+app.use('/api/user/',userRouter);
 
 //
-server.get('/',auth,(req,res)=>{{userEmail:req.session.userEmail}
+app.get('/',auth,(req,res)=>{{userEmail:req.session.userEmail}
 res.render('form',);
 })
 
-server.use('/api/UAT/',auth,uatRouter);
+app.use('/api/UAT/',auth,uatRouter);
 
-server.use('/api/RateCard/',auth,RateRouter);
+app.use('/api/RateCard/',auth,RateRouter);
 
-server.get('/create',auth,(req,res)=>{
+app.get('/create',auth,(req,res)=>{
     res.render('form',{userEmail:req.session.userEmail});
 });
 
-server.use('/api/RateCardnonLarge/',auth,non_large_router);
-server.use('/api/LargeUAT/',auth,uatLargeRouter);
-server.use('/api/b2bUAT/',auth,uatb2bRouter);
-server.use('/api/nonlarge/',auth,nonLargeRoute);
-server.use('/api/b2bRateCard/',auth,b2bRouter);
+app.use('/api/RateCardnonLarge/',auth,non_large_router);
+app.use('/api/LargeUAT/',auth,uatLargeRouter);
+app.use('/api/b2bUAT/',auth,uatb2bRouter);
+app.use('/api/nonlarge/',auth,nonLargeRoute);
+app.use('/api/b2bRateCard/',auth,b2bRouter);
+
+
+
+const httpApp =http.createServer(app);
+const io = new Server(httpApp, {
+    cors: {
+        origin: '*',
+        methods: ["GET", "POST"]
+    }
+});
+
+io.on('connection', (socket) => {
+    console.log("Connection established:", socket.id);
+
+    
+    socket.on('join', (username) => {
+        socket.username = username; 
+        console.log(`${username} has joined the chat.`);
+        chatModel.find().sort({timestamp:1}).limit(50).then((message)=>{
+            socket.emit('load_messages',message);
+        }).catch((err)=>{
+            console.log(err);
+        });
+
+    });
+
+    // Handle new messages
+    socket.on('new_message', (message) => {
+        const userMessage = {
+            username: socket.username || "Anonymous", // Fallback to "Anonymous"
+            message: message
+        };
+       const newChat= new chatModel({
+        username:socket.username,
+        message:message,
+        timestamp:new Date()
+       });
+       newChat.save();
+
+
+        socket.broadcast.emit('broadcast_message', userMessage); // Send to all clients except the sender
+    });
+
+    // Handle disconnection
+    socket.on('disconnect', () => {
+        console.log("Connection disconnected:", socket.id);
+    });
+});
+
 
 
 const PORT =process.env.PORT || 3030;
-server.listen(PORT, () => {
+httpApp.listen(PORT, () => {
     connectUsingMongoose();
-    console.log(`Server is listening at http://localhost:${PORT}`);
+    console.log(`app is listening at http://localhost:${PORT}`);
 });
